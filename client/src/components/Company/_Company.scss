@@ -1,0 +1,286 @@
+#company-heading {
+  padding-top: 5rem;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 2.5rem;
+}
+
+// #company-logo-with-border {
+//   display: flex;
+//   float: right
+// }
+
+.description-logo {
+  float: right;
+  height: 250px;
+  width: 250px;
+  margin: 0 0 1rem 6rem;
+}
+// Company specific logo styling
+#Bach-logo {
+  width: 360px;
+}
+
+#Indigo-logo {
+  height: 140px;
+  width: 360px;
+  margin-top: 5rem;
+}
+
+section#company-info {
+  display: none;
+
+  p {
+    margin: 1rem 0;
+  }
+}
+
+.section-underline {
+  height: 5px;
+  width: 200px;
+  margin: 3rem 0;
+  background-color: pink;
+}
+
+section#groups {
+  padding: 1rem 0 5rem 0;
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+}
+
+#group-links {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-row-gap: 8rem;
+  padding-bottom: 5rem;
+  align-items: center;
+}
+
+.group-link {
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 0 auto 2rem auto;
+
+  img {
+    height: 215px;
+    border-radius: 50%;
+  }
+
+  img[src='/images/group-images/new_child_series.png'] {
+    height: 245px;
+  }
+
+  h4.group-title {
+    font-weight: 400;
+    line-height: 2rem;
+  }
+}
+
+#group-list {
+  margin-top: 2rem;
+
+  li {
+    margin: 1rem 0 1rem 2rem;
+  }
+
+  .group-link {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+}
+
+// Media queries
+@media (max-width: 1024px) {
+  #group-links {
+    grid-template-columns: repeat(3, auto);
+    grid-row-gap: 4rem;
+    padding-bottom: 2rem;
+  }
+
+  .group-link {
+    font-size: 1rem;
+
+    img {
+      height: 175px;
+    }
+
+    img[src='/images/group-images/new_child_series.png'] {
+      height: 250px;
+    }
+  }
+
+  #company-info {
+    // width: 85vw;
+    margin: 2.5rem auto 0 auto;
+
+    .description-logo {
+      height: 200px;
+      width: 200px;
+      margin: 0;
+    }
+
+    #uses-list ul li {
+      margin-left: 1rem;
+    }
+
+    .bg-primary,
+    .bg-secondary {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  #Bach-logo {
+    width: 244px;
+    height: 204px;
+  }
+
+  #Indigo-logo {
+    height: 150px;
+    width: 150px;
+  }
+
+  img[src='/images/group-images/animal_essences.png'],
+  img[src='/images/group-images/animal_essence_combinations.png'],
+  img[src='/images/group-images/healing_path.png'] {
+    height: 186px;
+  }
+}
+
+// Media queries
+@media (max-width: 670px) {
+  #group-links {
+    grid-template-columns: repeat(2, auto);
+  }
+
+  .group-link {
+    height: 180px;
+    width: 180px;
+
+    a {
+      font-size: 1rem;
+    }
+
+    img {
+      height: 150px;
+    }
+  }
+}
+
+// Media queries
+@media (max-width: 414px) {
+  section#groups {
+    padding: 0;
+  }
+
+  #group-links {
+    grid-template-columns: repeat(1, auto);
+    grid-row-gap: 2rem;
+  }
+
+  .group-link {
+    height: 200px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    a {
+      font-size: 1.1rem;
+      display: block;
+    }
+
+    img {
+      height: 150px;
+    }
+  }
+
+  section#company-info {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+
+    p {
+      width: 85%;
+      margin: 1rem auto;
+    }
+
+    i {
+      display: block;
+      width: 85%;
+      margin: auto;
+    }
+
+    h3 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    // Remove border radius and specific margins, just from coloured background section inside #company-info
+    .br-10 {
+      border-radius: 0;
+    }
+
+    .my-1 {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .mb-1 {
+      margin-bottom: 0;
+    }
+
+    .mt-1 {
+      margin-top: 0;
+    }
+
+    .bg-primary,
+    .bg-secondary,
+    .bg-tertiary {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .description-logo {
+      float: none;
+      display: block;
+      margin: auto;
+    }
+
+    #uses-list ul li {
+      margin-left: 0.5rem;
+    }
+
+    .section-underline {
+      margin: 3rem auto;
+    }
+
+    #threefold-system {
+      text-align: center;
+    }
+
+    #Bach-logo {
+      width: 270px;
+    }
+
+    #Bailey-logo {
+      margin-bottom: 2rem;
+    }
+
+    #Indigo-logo {
+      margin-top: 2rem;
+    }
+
+    #Pacific-logo {
+      margin: 2rem auto;
+    }
+
+    #WEAE-logo {
+      margin: 2rem auto;
+    }
+  }
+}

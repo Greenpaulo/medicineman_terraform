@@ -1,0 +1,131 @@
+section#keywords {
+  width: 100%;
+  margin: 3rem auto 0 auto;
+  padding-left: 6rem;
+  padding-bottom: 3rem;
+
+  ul {
+    columns: 4;
+    list-style: none;
+  }
+}
+
+section#chakras-meridians-list,
+section#cross-reference-guide {
+  display: none;
+  a {
+    margin-bottom: 1rem;
+  }
+}
+
+#chakra-list {
+  display: flex;
+  justify-content: space-between;
+
+  ul {
+    list-style: none;
+    columns: 4;
+  }
+}
+
+#meridian-list {
+  ul {
+    list-style: none;
+    columns: 3;
+  }
+}
+
+@media (max-width: 1024px) {
+  section#keywords {
+    padding-left: 4rem;
+
+    ul {
+      columns: 3;
+      width: 80vw;
+      margin: auto;
+
+      li a {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  #chakra-list,
+  #meridian-list {
+    ul {
+      columns: 3;
+
+      a {
+        border-bottom: 1px solid var(--primary);
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  section#keywords {
+    padding: 0;
+
+    ul {
+      width: 90%;
+      padding-left: 4rem;
+      columns: 2;
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  section#keywords {
+    ul {
+      width: 100%;
+      padding-left: 0;
+      columns: 2;
+      text-align: center;
+    }
+  }
+
+  #chakra-list,
+  #meridian-list {
+    padding: 2rem 0;
+    ul {
+      columns: 2;
+
+      a {
+        border-bottom: 1px solid var(--primary);
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 414px) {
+  #chakras,
+  #meridians {
+    border-radius: 0;
+
+    h2 {
+      text-align: center;
+    }
+  }
+
+  #meridians {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 350px) {
+  #chakra-list ul,
+  #meridian-list ul {
+    columns: 1;
+  }
+}
+
+@media (max-width: 320px) {
+  section#keywords {
+    width: 90%;
+    ul li a {
+      font-size: 0.8rem;
+    }
+  }
+}

@@ -1,0 +1,94 @@
+section#beginner-education {
+  width: 80%;
+  margin: auto;
+
+  img {
+    float: right;
+    margin: 0 0 2rem 2rem;
+    width: 350px;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+}
+
+#beginner-section-1,
+#beginner-section-2,
+#beginner-section-3,
+#beginner-section-4,
+#beginner-section-references {
+  display: none;
+}
+
+#beginner-section-references {
+  ul {
+    list-style: none;
+
+    li {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+//Media queries
+@media (max-width: 1550px) {
+  section#beginner-education {
+    width: 92%;
+
+    h3 {
+      text-align: center;
+    }
+
+    img {
+      width: 250px;
+    }
+  }
+}
+
+@media (max-width: 414px) {
+  section#beginner-education {
+    width: 100%;
+    font-size: 0.9rem;
+
+    p,
+    ul {
+      width: 85%;
+      margin: 0 auto 2rem auto;
+    }
+
+    h3,
+    h4 {
+      width: 85%;
+      text-align: center;
+      // margin: 3rem auto 1.5rem;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    h5 {
+      width: 85%;
+      font-size: 0.9rem;
+      text-align: center;
+      margin: 2rem auto 1rem auto;
+    }
+
+    .br-10 {
+      border-radius: 0;
+    }
+
+    .px-2 {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    img {
+      float: none;
+      display: block;
+      margin: 2rem auto;
+    }
+  }
+}

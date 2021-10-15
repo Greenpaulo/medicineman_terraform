@@ -1,0 +1,116 @@
+section#intermediate-education {
+  width: 80%;
+  margin: auto;
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    margin-bottom: 1.5rem;
+  }
+
+  img {
+    float: right;
+    margin: 0 0 2rem 2rem;
+  }
+
+  img#chakras_front,
+  img#flexner {
+    max-width: 350px;
+  }
+
+  img#prescription-drugs {
+    max-width: 450px;
+  }
+
+  #peter-tadd-article {
+    ul {
+      list-style: none;
+    }
+  }
+}
+
+#intermediate-section-1,
+#intermediate-section-2,
+#intermediate-section-3,
+#intermediate-section-4,
+#intermediate-section-5,
+#intermediate-section-6,
+#intermediate-section-7,
+#intermediate-section-references {
+  display: none;
+  padding-bottom: 2rem;
+}
+
+#intermediate-section-references {
+  ul {
+    list-style: none;
+
+    li {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+// Media queries
+@media (max-width: 1024px) {
+  section#intermediate-education {
+    width: 92%;
+
+    h3 {
+      text-align: center;
+    }
+
+    img {
+      // float: none;
+      max-width: 300px;
+      max-height: 400px;
+      margin-left: 1rem;
+    }
+  }
+}
+
+@media (max-width: 414px) {
+  section#intermediate-education {
+    width: 100%;
+    font-size: 0.9rem;
+
+    p,
+    ul {
+      width: 85%;
+      margin: 0 auto 2rem auto;
+    }
+
+    h3,
+    h4 {
+      width: 85%;
+      text-align: center;
+      // margin: 3rem auto 1.5rem;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    h5 {
+      width: 85%;
+      font-size: 0.9rem;
+      text-align: center;
+      margin: 2rem auto 1rem auto;
+    }
+
+    .br-10 {
+      border-radius: 0;
+    }
+
+    .px-2 {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    img {
+      float: none;
+      display: block;
+      margin: 2rem auto;
+      max-width: 420px;
+    }
+  }
+}

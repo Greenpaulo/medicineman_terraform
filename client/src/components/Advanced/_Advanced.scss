@@ -1,0 +1,148 @@
+section#advanced-education {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+
+  img {
+    float: right;
+    margin: 0 0 2rem 2rem;
+    max-width: 400px;
+    padding-top: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    margin-bottom: 1.5rem;
+  }
+
+  #emotions {
+    margin-top: 2rem;
+
+    p {
+      margin: 1rem 0 2rem 0;
+    }
+  }
+}
+
+#advanced-section-1,
+#advanced-section-2,
+#advanced-section-3,
+#advanced-section-4,
+#advanced-section-5,
+#advanced-section-6 {
+  display: none;
+  padding-bottom: 2rem;
+}
+
+.video-container {
+  width: 918px;
+  margin: auto;
+}
+
+iframe {
+  margin: 2rem auto 0 auto;
+}
+
+.quote-block {
+  font-weight: 400;
+}
+
+// Media queries
+@media (max-width: 1024px) {
+  section#advanced-education {
+    width: 92%;
+
+    h3 {
+      text-align: center;
+    }
+
+    img {
+      // float: none;
+      max-width: 300px;
+      max-height: 400px;
+      margin-left: 1rem;
+    }
+
+    .video-container {
+      width: 100%;
+
+      iframe {
+        width: 80vw;
+      }
+    }
+  }
+}
+
+@media (max-width: 414px) {
+  section#advanced-education {
+    width: 100%;
+    font-size: 0.9rem;
+
+    p,
+    #emotions p,
+    ul,
+    i {
+      width: 85%;
+      margin: 0 auto 2rem auto;
+    }
+
+    #advanced-section-4 i {
+      display: block;
+      text-align: center;
+    }
+
+    h3,
+    h4 {
+      width: 85%;
+      text-align: center;
+      // margin: 3rem auto 1.5rem;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    h5 {
+      width: 85%;
+      font-size: 0.9rem;
+      text-align: center;
+      margin: 2rem auto 1rem auto;
+    }
+
+    .br-10 {
+      border-radius: 0;
+    }
+
+    .px-2 {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    img {
+      float: none;
+      display: block;
+      margin: 2rem auto;
+      max-width: 100vw;
+    }
+
+    .video-container {
+      width: 100%;
+      margin: auto;
+
+      iframe {
+        width: 100vw;
+      }
+    }
+
+    #emotions {
+      h4 {
+        margin-top: 3rem;
+      }
+    }
+  }
+
+  #what-is-happening {
+    padding-top: 0;
+    margin-top: 2rem;
+  }
+}

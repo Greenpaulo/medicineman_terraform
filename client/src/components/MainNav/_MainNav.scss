@@ -1,0 +1,293 @@
+section#mainnav {
+  height: 80vh;
+  width: 12vw;
+  position: fixed;
+  top: 0;
+  left: 125px;
+  border-right: 5px solid pink;
+  margin: 85px 0;
+
+  nav#main-nav {
+    height: 74%;
+    margin-right: 2rem;
+  }
+
+  ul#nav-links {
+    list-style: none;
+    // height: 76%;
+    height: 67%;
+    margin-top: -2rem;
+  }
+  li {
+    margin: 40px 0;
+  }
+
+  li#top-logo-link {
+    display: none;
+  }
+
+  li a {
+    font-size: 1.15rem;
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 30px;
+      margin-right: 1rem;
+    }
+  }
+
+  li.logo-link {
+    font-family: 'Dawning of a New Day', cursive;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
+
+    a {
+      text-transform: capitalize;
+      font-size: 2.5rem;
+      line-height: 3rem;
+    }
+  }
+
+  #side-logo #vine-underline-container,
+  #side-logo svg#vine-underline {
+    width: 75px;
+    height: 30px;
+  }
+
+  #links {
+    margin: 250px 0 0 15px;
+    border-top: 5px solid var(--secondary);
+    width: 83%;
+    padding-top: 27px;
+    padding-left: 16px;
+
+    a {
+      margin-right: 1rem;
+    }
+
+    i.fa-facebook,
+    i.fa-twitter,
+    i.fa-youtube,
+    i.fa-instagram {
+      color: var(--secondary);
+    }
+  }
+}
+
+// Responsive menu styles
+#open-slide {
+  display: none;
+}
+
+#dropdown-nav {
+  position: fixed;
+  top: 5.7rem;
+  height: 4.7rem;
+  // padding: 2rem;
+  z-index: 2;
+  background-color: var(--primary);
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: 0.3s ease-in;
+  display: none;
+  justify-content: space-around;
+
+  ul#dropdown-nav-links {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  li {
+    list-style: none;
+    padding: 0.5rem 1rem;
+    display: inline;
+  }
+
+  a {
+    transition: all 0.2s ease-in;
+  }
+
+  &.animate__animated.animate__fadeIn {
+    --animate-duration: 0.7s;
+  }
+}
+
+// Media queries
+@media (max-width: 1750px) {
+  section#mainnav {
+    left: 120px;
+
+    li a {
+      font-size: 0.9rem;
+    }
+
+    #links {
+      i {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  section#mainnav {
+    left: 75px;
+    width: 14vw;
+
+    li a {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  section#mainnav {
+    width: 15vw;
+  }
+}
+@media (max-width: 1130px) {
+  section#mainnav {
+    left: 50px;
+
+    li a {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  section#mainnav {
+    background-color: var(--secondary);
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 92px;
+    margin: 0;
+    border-bottom: 1px solid darken(#ffd4bf, 2%);
+    border-right: none;
+
+    #links {
+      display: none;
+    }
+
+    li {
+      margin-top: 10px;
+
+      a {
+        font-size: 1rem;
+      }
+    }
+
+    li#side-logo-link {
+      display: none;
+    }
+
+    li#top-logo-link {
+      display: inline-block;
+    }
+
+    li.logo-link a {
+      font-size: 1.8rem;
+      line-height: 2.1rem;
+      width: 50px;
+      padding: 0.25rem 0 0 1rem;
+      margin-top: 30px;
+    }
+  }
+
+  #main-nav {
+    ul {
+      display: flex;
+
+      li.nav-link {
+        display: none;
+      }
+    }
+  }
+
+  #open-slide {
+    display: inline;
+    float: right;
+    margin-top: 5px;
+  }
+
+  #side-logo #vine-underline-container,
+  #side-logo svg#vine-underline {
+    display: none;
+  }
+}
+
+// Remove links on side menu when height is too small
+@media (max-height: 900px) {
+  #links {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  section#mainnav li a {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 540px) {
+  section#mainnav li a {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 414px) {
+  section#mainnav {
+    height: 75px;
+
+    li.logo-link a {
+      font-size: 1.5rem;
+      line-height: 1.7rem;
+      padding-top: 0.05rem;
+    }
+
+    nav#main-nav {
+      margin-right: 1.25rem;
+    }
+
+    #open-slide {
+      margin-top: 13px;
+    }
+
+    i.fa-bars {
+      font-size: 2.5em;
+    }
+
+    // Dropdown menu on mobile
+    #dropdown-nav {
+      height: auto;
+      top: 4.7rem;
+
+      ul {
+        margin-top: 0.7rem;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0.5rem 0;
+
+        li {
+          margin-bottom: 1rem;
+
+          a {
+            font-size: 1rem;
+            line-height: 0.7rem;
+          }
+        }
+      }
+    }
+  }
+}

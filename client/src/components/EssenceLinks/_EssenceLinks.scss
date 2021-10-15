@@ -1,0 +1,131 @@
+section#essence-links {
+  border-top: pink 3px solid;
+}
+
+#table-container {
+  display: none;
+}
+
+#image-grid-container {
+  display: grid;
+}
+
+#image-grid {
+  display: grid;
+  margin-top: 4rem;
+  grid-template-columns: repeat(5, auto);
+  grid-row-gap: 4rem;
+
+  .essence-link-container {
+    min-height: 220px;
+    width: 200px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .essence-link-image {
+    min-height: 200px;
+    width: 200px;
+  }
+}
+
+#view-selector {
+  width: 150px;
+  margin-left: auto;
+}
+
+button.images-toggler {
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  background-color: var(--secondary);
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 0.75rem;
+  border: none;
+  transition: 0.1s ease-in-out;
+  float: right;
+
+  &:hover {
+    background-color: darken(#ffd4bf, 5%);
+  }
+}
+
+table {
+  width: 100%;
+  font-size: 0.9rem;
+  margin: 2rem 0;
+  padding: 0 0 0.7rem 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+td {
+  vertical-align: top;
+  width: 130px;
+}
+
+#mobile-essence-links-list {
+  display: none;
+}
+
+//Media queries
+@media (max-width: 1550px) {
+  #image-grid {
+    grid-template-columns: repeat(4, auto);
+    grid-column-gap: 1.5rem;
+    width: 100%;
+    margin: 4rem auto 0 auto;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 1250px) {
+  #image-grid {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+@media (max-width: 1024px) {
+  section#essence-links {
+    margin-top: 0;
+  }
+
+  #image-grid {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+@media (max-width: 770px) {
+  #image-grid {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+//Media queries
+@media (max-width: 500px) {
+  #image-grid-container {
+    display: none;
+  }
+
+  #mobile-essence-links-list {
+    display: block;
+    list-style: none;
+    columns: 2;
+    margin-top: 3rem;
+  }
+}
+
+//Media queries
+@media (max-width: 414px) {
+  #mobile-essence-links-list {
+    columns: 1;
+    width: 60%;
+    margin: 2rem auto;
+    text-align: center;
+  }
+}
