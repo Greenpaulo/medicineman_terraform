@@ -2,7 +2,7 @@ variable "location" {
   type = string
 }
 
-variable "medicineman_rg" {
+variable "medicineman_rsg" {
   type = string
 }
 
