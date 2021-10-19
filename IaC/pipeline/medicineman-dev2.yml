@@ -1,0 +1,87 @@
+name: medicineman-dev-deploy
+trigger: none
+
+stages:
+  - stage: plan
+    jobs:
+      - job: tfenv_install
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - checkout: none
+          - bash: tfenv install $(terraform_version) && tfenv use $(terraform_version)
+            displayName: 'tfenv install'
+
+      # some parts of the code run az commands to workaround lack of terraform features
+      - job: az_login
+        dependsOn: tfenv_install
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - checkout: none
+          - bash: az login --service-principal --username $ARM_CLIENT_ID --password $SP_SECRET --tenant $ARM_TENANT_ID
+            displayName: 'az cli Login'
+            env:
+              SP_SECRET: $(ARM_CLIENT_SECRET)
+
+      - job: az_set_subscription
+        dependsOn: az_login
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - checkout: none
+          - bash: |
+              echo "Subscription set to" $ARM_SUBSCRIPTION_ID
+              az account set --subscription $ARM_SUBSCRIPTION_ID
+            displayName: 'az set subscription'
+            env:
+              SP_SECRET: $(ARM_CLIENT_SECRET)
+
+      - job: terraform_init_and_plan
+        dependsOn: az_set_subscription
+        pool:
+          vmImage: ubuntu-latest
+        workspace:
+          clean: all
+        steps:
+          - checkout: self
+            path: terraform_repo
+          - bash: |
+              cp /home/uclanadmin/.terraformrc /home/AzDevOps/
+              terraform init
+              terraform plan -out=$TERRAFORM_PLAN_OUTPUT
+            displayName: 'terraform init and plan'
+            workingDirectory: $(terraform_path)
+            failOnStderr: true
+            env:
+              ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+              TF_VAR_SERVICE_ACCOUNT_PASSWORD: $(TF_VAR_SERVICE_ACCOUNT_PASSWORD)
+          - publish: $(Pipeline.Workspace)/terraform_repo
+            artifact: terraform_repo
+
+  - stage: apply
+    condition: and(succeeded(), eq('${{ parameters.action }}', 'plan-and-apply'))
+    jobs:
+      # all environments should have an approvals stage to pause between plan and apply
+      - deployment: terraform_init_and_apply
+        environment: infrastructure-${{ parameters.environment }}
+        pool:
+          vmImage: ubuntu-latest
+        workspace:
+          clean: all
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: terraform_repo
+                - bash: |
+                    # workaround missing execute permissions on the azurerm provider
+                    chmod a+x .terraform/providers/registry.terraform.io/hashicorp/azurerm/2.76.0/linux_amd64/*
+                    terraform apply -auto-approve $TERRAFORM_PLAN_OUTPUT
+                  displayName: 'terraform init and apply'
+                  workingDirectory: $(terraform_path)
+                  failOnStderr: true
+                  env:
+                    ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+                    TF_VAR_SERVICE_ACCOUNT_PASSWORD: $(TF_VAR_SERVICE_ACCOUNT_PASSWORD)

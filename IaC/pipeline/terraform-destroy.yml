@@ -1,0 +1,48 @@
+trigger:
+  branches:
+    include:
+    - none
+variables:
+- group: pipeline-variables
+pool:
+  vmImage: Ubuntu-20.04
+stages:
+- stage: tfenv_install
+  jobs:
+  - job: tfenv_install
+    steps:
+    - task: 6d15af64-176c-496d-b583-fd2ae21d4df4@1
+      condition: false
+      inputs:
+        repository: none
+    - task: Bash@3
+      displayName: "tfenv_install"
+      inputs:
+        targetType: inline
+        script: |
+          brew install tfenv
+          # tfenv install latest && tfenv use latest
+          GREP_OPTIONS="--color=never" tfenv install 0.14.5
+          tfenv use 0.14.5
+- stage: destroy
+  jobs:
+  - job: terraform_destroy
+    steps:
+    - task: 6d15af64-176c-496d-b583-fd2ae21d4df4@1
+      inputs:
+        repository: self
+    - task: Bash@3
+      displayName: "tf_destroy"
+      inputs:
+        targetType: inline
+        script: |
+          export ARM_CLIENT_ID=$(client-id)
+          export ARM_CLIENT_SECRET=$(client-secret)
+          export ARM_SUBSCRIPTION_ID=$(sub-id)
+          export ARM_TENANT_ID=$(tenant-id)
+          az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant $ARM_TENANT_ID
+          terraform init -backend-config="storage_account_name=$(tfBackendStorageAccountName)" -backend-config="container_name=$(tfBackendStorageContainerName)" -backend-config="access_key=$(tfBackendAccessKey)" -backend-config="key=$(tfBackendFileName)"
+          terraform destroy -auto-approve $TERRAFORM_PLAN_OUTPUT -var="aks_sp=$(aks-sp)" -var="aks_client_secret=$(aks-client-secret)"
+        failOnStderr: true
+        workingDirectory: $(System.DefaultWorkingDirectory)
+
